@@ -35,7 +35,7 @@ services:
       - INFLUX_ORG=${INFLUX_ORG}
       - INFLUX_BUCKET=${INFLUX_BUCKET}  
     networks:
-     - servicios_zsh-supremacists:
+      servicios_zsh-supremacists:
         ipv4_address: 172.22.0.5
 
   grafana:
