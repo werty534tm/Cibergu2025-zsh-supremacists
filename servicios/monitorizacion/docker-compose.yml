@@ -79,6 +79,7 @@ services:
   n8n:
     image: n8nio/n8n
     restart: always
+    user: "${UID}:${GID}"
     env_file:
       - .env
     ports:
@@ -90,10 +91,11 @@ services:
       - N8N_BASIC_AUTH_ACTIVE=true
       - N8N_BASIC_AUTH_USER=${N8N-USER}
       - N8N_BASIC_AUTH_PASSWORD=${N8N-PWD}
+      - N8N_SECURE_COOKIE=false
       - WEBHOOK_URL=${WEBHOOK}
       - GENERIC_TIMEZONE=Europe/Madrid 
     volumes:
-      - ~/.n8n:/home/node/.n8n 
+      - ./n8n:/home/node/.n8n 
     networks:
       servicios_zsh-supremacists:
         ipv4_address: 172.22.0.10
