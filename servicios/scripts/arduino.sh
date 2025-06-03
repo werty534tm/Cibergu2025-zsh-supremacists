@@ -14,7 +14,7 @@ do
   echo $co
   echo $metales
 
-  curl -X POST -H "Content-Type: application/json" -d '{"salida": {"co2": $co2, "co":$co, "metales": $metales}}' $ip_telegraph
+  curl -X POST -H "Content-Type: application/json" -d '{"salida": {"co2": $co2, "co":$co, "metales": $metales, "timestamp": '$(date +%s)'}}' $ip_telegraph
 
   sleep $intervalo
 done
