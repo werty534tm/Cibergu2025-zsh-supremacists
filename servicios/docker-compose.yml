@@ -7,7 +7,7 @@ services:
     
     volumes:
       - ./scripts/:/app/
-    #command: ["zsh", "/app/script.zsh"]
+    command: ["zsh", "/app/arduino.sh"]
       
     restart: unless-stopped
     stdin_open: true
