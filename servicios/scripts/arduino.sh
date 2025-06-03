@@ -1,6 +1,6 @@
 #!/bin/env zsh
 
-ip_telegraph=172.22.0.5:8080
+ip_telegraph=172.22.0.5:8080/submit_air_quality
 intervalo=10
 
 while :
