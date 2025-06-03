@@ -1,5 +1,0 @@
-2025/06/03 15:29:41 [warn] 184#184: 512 worker_connections are not enough, reusing connections
-2025/06/03 15:29:41 [alert] 183#183: 512 worker_connections are not enough
-2025/06/03 15:29:41 [error] 184#184: *1006 recv() failed (104: Connection reset by peer) while reading response header from upstream, client: 127.0.0.1, server: localhost-nginx-proxy-manager, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:80/favicon.ico", host: "192.168.0.4", referrer: "http://192.168.0.4:8801/"
-2025/06/03 15:48:13 [error] 186#186: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.0.2, server: nginxproxymanager, request: "GET /api/ HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "192.168.0.4:8170", referrer: "http://192.168.0.4:8170/nginx/proxy"
-2025/06/03 15:57:46 [error] 188#188: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.0.2, server: nginxproxymanager, request: "GET /api/ HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "192.168.0.4:8170", referrer: "http://192.168.0.4:8170/nginx/proxy"
