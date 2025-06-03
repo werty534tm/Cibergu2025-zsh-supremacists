@@ -1,6 +1,6 @@
 #!/bin/env zsh
 
-ip_telegraph=172.22.0.5
+ip_telegraph=172.22.0.5:8080
 intervalo=10
 
 while :
