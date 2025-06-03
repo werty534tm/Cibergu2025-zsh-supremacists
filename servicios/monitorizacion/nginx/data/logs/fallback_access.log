@@ -1,0 +1,2 @@
+[03/Jun/2025:14:50:34 +0000] 400 - GET http fairmonitor.duckdns.org "/" [Client 46.222.21.156] [Length 654] [Gzip -] "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" "-"
+[03/Jun/2025:14:50:34 +0000] 400 - GET http fairmonitor.duckdns.org "/favicon.ico" [Client 46.222.21.156] [Length 654] [Gzip -] "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" "http://fairmonitor.duckdns.org:8543/"

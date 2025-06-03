@@ -5,8 +5,8 @@ services:
     user: "${UID}:${GID}"
     env_file:
       - .env
-    ports:
-      - "8086:8086" # Puerto para la API de InfluxDB y UI
+    expose:
+      - "8086"
     volumes:
       - ./influxdb-data:/var/lib/influxdb2
     environment:
@@ -26,8 +26,8 @@ services:
     container_name: telegraf_service
     volumes:
       - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
-    ports:
-      - "8080:8080"
+    expose:
+      - "8080"
     depends_on:
       - influxdb
     environment:
@@ -39,13 +39,15 @@ services:
         ipv4_address: 172.22.0.5
 
   grafana:
-    image: grafana/grafana-oss:10.4.2 
+    build: 
+      context: .
+      dockerfile: grafana.dockerfile
     user: "${UID}:${GID}"
     container_name: grafana_service
     env_file:
       - .env
-    ports:
-      - "3000:3000" 
+    expose:
+      - "3000"
     volumes:
       - ./grafana-data:/var/lib/grafana 
     depends_on:
@@ -53,9 +55,28 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=${GR_ADMIN}
       - GF_SECURITY_ADMIN_PASSWORD=${GR_ADMIN_PWD}
+      - GF_INSTALL_PLUGINS=grafana-image-renderer
+    networks:
+      - servicios_zsh-supremacists
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: nginx-proxy-manager-fair
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - '8801:80'
+      - '8543:443'
+      - '8170:81'
+    environment:
+      - DB_MYSQL_PASSWORD:${MYSQL_PWD}
+    volumes:
+      - ./nginx/data:/data
+      - ./nginx/letsencrypt:/etc/letsencrypt
     networks:
       - servicios_zsh-supremacists
 
 networks:
   servicios_zsh-supremacists:
     external: true
+  
