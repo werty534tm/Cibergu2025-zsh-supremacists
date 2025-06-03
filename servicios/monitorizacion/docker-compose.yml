@@ -95,7 +95,7 @@ services:
     volumes:
       - ~/.n8n:/home/node/.n8n 
     networks:
-      servicios-zsh-supremacists:
+      servicios_zsh-supremacists:
         ipv4_address: 172.22.0.10
 
 networks:
