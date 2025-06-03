@@ -2,6 +2,7 @@ services:
   influxdb:
     image: influxdb:2.7.6 
     container_name: influxdb_service
+    user: "${UID}:${GID}"
     env_file:
       - .env
     ports:
@@ -17,13 +18,14 @@ services:
       - DOCKER_INFLUXDB_INIT_RETENTION_PERIOD=15d
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUX_TOKEN}
     networks:
-      - zsh-supremacists
+      - servicios_zsh-supremacists
 
   telegraf:
     image: telegraf:1.29 
+    user: "${UID}:${GID}"
     container_name: telegraf_service
     volumes:
-      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro 
+      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
     ports:
       - "8080:8080"
     depends_on:
@@ -32,13 +34,13 @@ services:
       # Pasamos el token de InfluxDB a Telegraf como variable de entorno
       - INFLUX_TOKEN=my-super-secret-admin-token
       - INFLUX_ORG=my-org
-      - INFLUX_BUCKET=my-bucket
-      
+      - INFLUX_BUCKET=my-bucket   
     networks:
-      - zsh-supremacists
+      - servicios_zsh-supremacists
 
   grafana:
     image: grafana/grafana-oss:10.4.2 
+    user: "${UID}:${GID}"
     container_name: grafana_service
     env_file:
       - .env
@@ -52,8 +54,8 @@ services:
       - GF_SECURITY_ADMIN_USER=${GR_ADMIN}
       - GF_SECURITY_ADMIN_PASSWORD=${GR_ADMIN_PWD}
     networks:
-      - zsh-supremacists
+      - servicios_zsh-supremacists
 
 networks:
-  zsh-supremacists:
+  servicios_zsh-supremacists:
     external: true
