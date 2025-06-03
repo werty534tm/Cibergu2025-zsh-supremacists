@@ -13,8 +13,8 @@ services:
       - DOCKER_INFLUXDB_INIT_MODE=setup 
       - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUX_USER}
       - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUX_PWD}
-      - DOCKER_INFLUXDB_INIT_ORG=cibergu
-      - DOCKER_INFLUXDB_INIT_BUCKET=airquality
+      - DOCKER_INFLUXDB_INIT_ORG=${INFLUX_ORG}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUX_BUCKET}
       - DOCKER_INFLUXDB_INIT_RETENTION_PERIOD=15d
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUX_TOKEN}
     networks:
@@ -31,12 +31,12 @@ services:
     depends_on:
       - influxdb
     environment:
-      # Pasamos el token de InfluxDB a Telegraf como variable de entorno
-      - INFLUX_TOKEN=my-super-secret-admin-token
-      - INFLUX_ORG=my-org
-      - INFLUX_BUCKET=my-bucket   
+      - INFLUX_TOKEN=${INFLUX_TOKEN}
+      - INFLUX_ORG=${INFLUX_ORG}
+      - INFLUX_BUCKET=${INFLUX_BUCKET}  
     networks:
-      - servicios_zsh-supremacists
+     - servicios_zsh-supremacists:
+        ipv4_address: 172.22.0.5
 
   grafana:
     image: grafana/grafana-oss:10.4.2 
