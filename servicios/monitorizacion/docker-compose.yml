@@ -1,5 +1,4 @@
 services:
-  services:
   influxdb:
     image: influxdb:2.7.6 
     container_name: influxdb_service
@@ -57,4 +56,4 @@ services:
 
 networks:
   zsh-supremacists:
-    externa: true
+    external: true
