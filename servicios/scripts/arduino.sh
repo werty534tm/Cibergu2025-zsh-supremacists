@@ -14,8 +14,8 @@ echo "Presiona Ctrl+C para detener."
 while :
 do
   # Generación de datos
-  co2_val=$(( $RANDOM % 15 + 400 )) # Ejemplo: CO2 entre 400 y 414
-  co_val=$(( ($RANDOM % 80) / 10.0 )) # Ejemplo: CO entre 0.0 y 7.9 (requiere zsh para flotantes así o usa otra técnica)
+  co2_val=$(( $RANDOM % 13 )) 
+  co_val=$(( $RANDOM % 7 ))
   metales_val=$(( $RANDOM % 120 ))
   timestamp_val=$(date +%s)
 
