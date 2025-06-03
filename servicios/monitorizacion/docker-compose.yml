@@ -46,8 +46,8 @@ services:
     container_name: grafana_service
     env_file:
       - .env
-    expose:
-      - "3000"
+    ports:
+      - "3000:3000"
     volumes:
       - ./grafana-data:/var/lib/grafana 
     depends_on:
@@ -74,7 +74,8 @@ services:
       - ./nginx/data:/data
       - ./nginx/letsencrypt:/etc/letsencrypt
     networks:
-      - servicios_zsh-supremacists
+      servicios_zsh-supremacists:
+        ipv4_address: 172.22.0.6
 
 networks:
   servicios_zsh-supremacists:

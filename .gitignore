@@ -1,1 +1,4 @@
 servicios/monitorización/.env/
+servicios/monitorización/nginx/
+servicios/monitorizacion/grafana-data/
+servicios/monitorizacion/influxdb-data/
